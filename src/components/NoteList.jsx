@@ -1,4 +1,10 @@
 const NoteList = ({notes, deleteNote}) =>{
+  const priorityColor = {
+    "High":"red",
+    "Medium": "orange",
+    "Low": "green"
+  }
+
   if (notes.length === 0){
     return (
       <p className="text-center text-gray-500">
@@ -9,7 +15,9 @@ const NoteList = ({notes, deleteNote}) =>{
   return(
     <div className="space-y-4">
       {notes.map((note) => (
-        <div key={note.id}
+        <div style= {{
+          borderLeftColor: priorityColor[note.priority]}}
+          key={note.id}
           className="p-4 bg-white rounded-lg shadown-md border-l-4"
         >
           <h3 className='text-lg font-bold'>{note.title}</h3>
