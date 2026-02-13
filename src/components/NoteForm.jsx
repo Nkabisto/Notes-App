@@ -87,6 +87,7 @@ const NoteForm = ({notes, setNotes}) => {
           name='description'
           value= {formData.description}
           onChange={handleChange}
+          required
         />
 
         <button className='w-full bg-purple-500 text-white py-2 rounded-lg cursor-pointer hover: bg-purple-600'>
