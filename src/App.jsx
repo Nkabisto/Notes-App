@@ -1,14 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import NoteForm from './components/NoteForm';
 import NoteList from './components/NoteList';
 
 const App = () =>{
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState(()=>{
+    const notes = JSON.parse(localStorage.getItem('notes'));
+    return notes || []
+  });
+
+  // useEffect is running whenever node changes including the initial state above
+  useEffect(()=>{
+    localStorage.setItem('notes', JSON.stringify(notes));
+  },[notes]);
 
   const deleteNote = (id) =>{
     const confirmDelete = window.confirm('Are you sure you want to delete this note?');
   {confirmDelete && setNotes(notes.filter((note)=> note.id !==id));
-  }};
+  }
+    
+    if(confirmDelete){
+      setNotes(notes.filter((note)=>note.id !== id));
+  };
+
+};
   
   return (
   <div className="max-w-lg mx-auto mt-10 p-6 bg-gray-100 rounded-lg shadow-lg">

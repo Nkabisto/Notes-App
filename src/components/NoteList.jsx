@@ -1,11 +1,6 @@
 import Note from "./Note";
 
 const NoteList = ({notes, deleteNote}) =>{
-  const priorityColor = {
-    "High":"red",
-    "Medium": "orange",
-    "Low": "green"
-  }
 
   if (notes.length === 0){
     return (
