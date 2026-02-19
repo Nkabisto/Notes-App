@@ -8,7 +8,7 @@ const App = () =>{
     return notes || []
   });
 
-  // useEffect is running whenever node changes including the initial state above
+  // useEffect is running whenever notes changes including the initial state above
   useEffect(()=>{
     localStorage.setItem('notes', JSON.stringify(notes));
   },[notes]);
